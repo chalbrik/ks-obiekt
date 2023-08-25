@@ -7,12 +7,13 @@
 
 using namespace std;
 
-class KsiazkaAdresowa
-{
+class KsiazkaAdresowa {
+
     UzytkownikMenedzer uzytkownikMenedzer;
 
 public:
 
+    KsiazkaAdresowa();
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
 
