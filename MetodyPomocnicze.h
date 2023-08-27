@@ -18,6 +18,8 @@ public:
     static string wczytajLinie();
 
     static string konwerjsaIntNaString(int liczba);
+
+    static int konwersjaStringNaInt(string liczba);
 };
 
 #endif
