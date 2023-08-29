@@ -17,15 +17,10 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
     return idOstatniegoAdresata;
 }
 
-void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata) {
-    idOstatniegoAdresata = noweIdOstatniegoAdresata;
-}
-
 vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika) {
 
     Adresat adresat;
     vector <Adresat> adresaci;
-    int idOstatniegoAdresata = 0;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
@@ -75,49 +70,13 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     system("pause");
 }
 
-
-
-//metody prywatne
-
-string PlikZAdresatami::pobierzZPlikuOstatniegoAdresataOdzielonegoPionowymiKreskami() {
-    fstream plikTekstowy;
-    char character;
-    bool keepLooping = true;
-    string daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
-
-    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
-
-    if (plikTekstowy.good() == true) {
-
-        plikTekstowy.seekg(-1, ios_base::end);
-
-        while(keepLooping) {
-
-            plikTekstowy.get(character);
-
-            if((int)plikTekstowy.tellg() <= 1) {
-
-                plikTekstowy.seekg(0);
-                keepLooping = false;
-
-            } else if(character == '\n') {
-                keepLooping = false;
-            } else {
-                plikTekstowy.seekg(-2, ios_base::cur);
-            }
-        }
-
-        getline(plikTekstowy, daneOstatniegoAdresataOdzielonegoPionowymiKreskami);
-    } else {
-        daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
-    }
-
-    plikTekstowy.close();
-
-    return daneOstatniegoAdresataOdzielonegoPionowymiKreskami;
+void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata) {
+    idOstatniegoAdresata = noweIdOstatniegoAdresata;
 }
 
 
+
+//metody prywatne
 
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) {
     int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
@@ -131,7 +90,7 @@ Adresat PlikZAdresatami::pobierzDaneAdresata(string daneAdresataOddzielonePionow
     string pojedynczaDanaAdresata = "";
     int numerPojedynczejDanejAdresata = 1;
 
-    for (int pozycjaZnaku = 0; pozycjaZnaku < daneAdresataOddzielonePionowymiKreskami.length(); pozycjaZnaku++) {
+    for (size_t pozycjaZnaku = 0; pozycjaZnaku < daneAdresataOddzielonePionowymiKreskami.length(); pozycjaZnaku++) {
         if (daneAdresataOddzielonePionowymiKreskami[pozycjaZnaku] != '|') {
             pojedynczaDanaAdresata += daneAdresataOddzielonePionowymiKreskami[pozycjaZnaku];
         } else {
@@ -169,6 +128,44 @@ int PlikZAdresatami::pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(strin
     int pozycjaRozpoczeciaIdAdresata = 0;
     int idAdresata = MetodyPomocnicze::konwersjaStringNaInt(pobierzLiczbe(daneJednegoAdresataOddzielonePionowymiKreskami, pozycjaRozpoczeciaIdAdresata));
     return idAdresata;
+}
+
+string PlikZAdresatami::pobierzZPlikuOstatniegoAdresataOdzielonegoPionowymiKreskami() {
+    fstream plikTekstowy;
+    char character;
+    bool keepLooping = true;
+    string daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
+
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+
+    if (plikTekstowy.good() == true) {
+
+        plikTekstowy.seekg(-1, ios_base::end);
+
+        while(keepLooping) {
+
+            plikTekstowy.get(character);
+
+            if((int)plikTekstowy.tellg() <= 1) {
+
+                plikTekstowy.seekg(0);
+                keepLooping = false;
+
+            } else if(character == '\n') {
+                keepLooping = false;
+            } else {
+                plikTekstowy.seekg(-2, ios_base::cur);
+            }
+        }
+
+        getline(plikTekstowy, daneOstatniegoAdresataOdzielonegoPionowymiKreskami);
+    } else {
+        daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
+    }
+
+    plikTekstowy.close();
+
+    return daneOstatniegoAdresataOdzielonegoPionowymiKreskami;
 }
 
 string PlikZAdresatami::pobierzLiczbe(string tekst, int pozycjaZnaku) {

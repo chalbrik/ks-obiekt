@@ -5,6 +5,7 @@ void KsiazkaAdresowa::rejestracjaUzytkownika() {
 }
 
 void KsiazkaAdresowa::logowanieUzytkownika() {
+
     uzytkownikMenedzer.logowanieUzytkownika();
 
     adresatMenedzer.ustawIdZalogowanegoUzytkownika(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());

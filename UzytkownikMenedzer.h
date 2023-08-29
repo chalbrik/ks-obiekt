@@ -25,7 +25,7 @@ class UzytkownikMenedzer {
 
 public:
 
-    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {}; //konstruktor
+    UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {};
 
     void wczytajUzytkownikowZPliku();
 

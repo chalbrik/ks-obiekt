@@ -1,3 +1,6 @@
+#ifndef ADRESATMENEDZER_H
+#define ADRESATMENEDZER_H
+
 #include <iostream>
 #include <vector>
 
@@ -22,11 +25,11 @@ public:
     AdresatMenedzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};
 
     void ustawIdZalogowanegoUzytkownika(int przekazaneIdZalogowanegoUzytkownika);
-
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 
     void dodajAdresata();
-
     void wyswietlWszystkichAdresatow();
 
 };
+
+#endif

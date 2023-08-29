@@ -6,7 +6,6 @@ void UzytkownikMenedzer::wczytajUzytkownikowZPliku()
     uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
-
 void UzytkownikMenedzer::rejestracjaUzytkownika()
 {
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
@@ -62,11 +61,9 @@ int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
     return idZalogowanegoUzytkownika;
 }
 
-
-
 void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
 {
-    for(int i = 0; i < uzytkownicy.size(); i++)
+    for(size_t i = 0; i < uzytkownicy.size(); i++)
     {
         cout << uzytkownicy[i].pobierzId() << endl;
         cout << uzytkownicy[i].pobierzLogin() << endl;

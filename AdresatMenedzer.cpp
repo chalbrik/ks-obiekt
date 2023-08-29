@@ -1,5 +1,6 @@
 #include "AdresatMenedzer.h"
 
+//metody publiczne
 void AdresatMenedzer::ustawIdZalogowanegoUzytkownika(int przekazaneIdZalogowanegoUzytkownika) {
     if(przekazaneIdZalogowanegoUzytkownika > 0) {
         idZalogowanegoUzytkownika = przekazaneIdZalogowanegoUzytkownika;
@@ -40,7 +41,7 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow() {
 }
 
 
-
+//metody prywatne
 Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata) {
     Adresat adresat;
 
