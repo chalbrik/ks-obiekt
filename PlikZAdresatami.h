@@ -19,6 +19,7 @@ class PlikZAdresatami {
     Adresat pobierzDaneAdresata(string daneJednegoAdresataOddzielonePionowymiKreskami);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 
+    string pobierzZPlikuOstatniegoAdresataOdzielonegoPionowymiKreskami();
     string pobierzLiczbe(string tekst, int pozycjaZnaku);
     string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
     bool czyPlikJestPusty();

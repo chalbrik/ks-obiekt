@@ -1,12 +1,16 @@
 #include "PlikZUzytkownikami.h"
 
 bool PlikZUzytkownikami::czyPlikJestPusty() {
-    fstream plikTekstowy;
+     fstream plikTekstowy;
+    plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::in);
     plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
+    if (plikTekstowy.tellg() == 0) {
+        plikTekstowy.close();
         return true;
-    else
+    } else {
+        plikTekstowy.close();
         return false;
+    }
 }
 
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
@@ -17,9 +21,7 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
     if (plikTekstowy.good() == true) {
         liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
 
-        if (czyPlikJestPusty() == true) {
-            plikTekstowy << liniaZDanymiUzytkownika;
-        } else {
+        if (czyPlikJestPusty() == false) {
             plikTekstowy << endl << liniaZDanymiUzytkownika ;
         }
     } else

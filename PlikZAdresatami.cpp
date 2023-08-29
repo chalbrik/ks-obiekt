@@ -1,13 +1,23 @@
 #include "PlikZAdresatami.h"
 
 //metody publiczne
-int PlikZAdresatami::pobierzIdOstatniegoAdresata()
-{
+int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
+
+    int idOstatniegoAdresata = 0;
+    string daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
+
+    daneOstatniegoAdresataOdzielonegoPionowymiKreskami = pobierzZPlikuOstatniegoAdresataOdzielonegoPionowymiKreskami();
+
+    if(daneOstatniegoAdresataOdzielonegoPionowymiKreskami != "") {
+        idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstatniegoAdresataOdzielonegoPionowymiKreskami);
+    } else {
+        idOstatniegoAdresata = 0;
+    }
+
     return idOstatniegoAdresata;
 }
 
-void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata)
-{
+void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata) {
     idOstatniegoAdresata = noweIdOstatniegoAdresata;
 }
 
@@ -41,8 +51,7 @@ vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(
         return adresaci;
 }
 
-void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
-{
+void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     string liniaZDanymiAdresata = "";
     fstream plikTekstowy;
     plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
@@ -51,9 +60,13 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
         if (czyPlikJestPusty() == true) {
+            cout << "1" << endl;
+            system("pause");
             plikTekstowy << liniaZDanymiAdresata;
         } else {
-            plikTekstowy << endl << liniaZDanymiAdresata ;
+            cout << "0" << endl;
+            system("pause");
+            plikTekstowy << endl << liniaZDanymiAdresata;
         }
     } else {
         cout << "Nie udalo sie otworzyc pliku i zapisac w nim danych." << endl;
@@ -65,6 +78,46 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 
 
 //metody prywatne
+
+string PlikZAdresatami::pobierzZPlikuOstatniegoAdresataOdzielonegoPionowymiKreskami() {
+    fstream plikTekstowy;
+    char character;
+    bool keepLooping = true;
+    string daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
+
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
+
+    if (plikTekstowy.good() == true) {
+
+        plikTekstowy.seekg(-1, ios_base::end);
+
+        while(keepLooping) {
+
+            plikTekstowy.get(character);
+
+            if((int)plikTekstowy.tellg() <= 1) {
+
+                plikTekstowy.seekg(0);
+                keepLooping = false;
+
+            } else if(character == '\n') {
+                keepLooping = false;
+            } else {
+                plikTekstowy.seekg(-2, ios_base::cur);
+            }
+        }
+
+        getline(plikTekstowy, daneOstatniegoAdresataOdzielonegoPionowymiKreskami);
+    } else {
+        daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
+    }
+
+    plikTekstowy.close();
+
+    return daneOstatniegoAdresataOdzielonegoPionowymiKreskami;
+}
+
+
 
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) {
     int pozycjaRozpoczeciaIdUzytkownika = daneJednegoAdresataOddzielonePionowymiKreskami.find_first_of('|') + 1;
@@ -143,10 +196,14 @@ string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKre
 
 bool PlikZAdresatami::czyPlikJestPusty() {
     fstream plikTekstowy;
+    plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
     plikTekstowy.seekg(0, ios::end);
-    if (plikTekstowy.tellg() == 0)
+    if (plikTekstowy.tellg() == 0) {
+        plikTekstowy.close();
         return true;
-    else
+    } else {
+        plikTekstowy.close();
         return false;
+    }
 }
 

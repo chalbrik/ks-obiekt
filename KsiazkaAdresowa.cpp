@@ -6,11 +6,10 @@ void KsiazkaAdresowa::rejestracjaUzytkownika() {
 
 void KsiazkaAdresowa::logowanieUzytkownika() {
     uzytkownikMenedzer.logowanieUzytkownika();
-    cout << uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika() << endl;
 
     adresatMenedzer.ustawIdZalogowanegoUzytkownika(uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
 
-    adresatMenedzer.pobierzAdresatowZalogowanegoUzytkownikaZPliku(); //pliku na razie nie ma
+    adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 
 }
 

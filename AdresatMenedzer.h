@@ -22,8 +22,10 @@ public:
 
     void ustawIdZalogowanegoUzytkownika(int przekazaneIdZalogowanegoUzytkownika);
 
-    void pobierzAdresatowZalogowanegoUzytkownikaZPliku();
+    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 
     void dodajAdresata();
+
+    void wyswietlWszystkichAdresatow();
 
 };
