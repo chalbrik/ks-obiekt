@@ -22,6 +22,7 @@ public:
     void rejestracjaUzytkownika();
     void logowanieUzytkownika();
     void dodajAdresata();
+    void wyswietlWszystkichAdresatow();
 
     void wypiszWszystkichUzytkownikow();
 

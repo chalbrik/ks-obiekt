@@ -14,6 +14,7 @@ class AdresatMenedzer {
     PlikZAdresatami plikZAdresatami;
 
     Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
+    void wyswietlDaneAdresata(Adresat adresat);
 
 
 public:
