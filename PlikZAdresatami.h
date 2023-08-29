@@ -1,4 +1,5 @@
-
+#ifndef PLIKZADRESATAMI_H
+#define PLIKZADRESATAMI_H
 
 #include <iostream>
 #include <vector>
@@ -37,3 +38,5 @@ public:
     void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
 
 };
+
+#endif

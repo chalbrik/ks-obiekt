@@ -55,12 +55,8 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
         if (czyPlikJestPusty() == true) {
-            cout << "1" << endl;
-            system("pause");
             plikTekstowy << liniaZDanymiAdresata;
         } else {
-            cout << "0" << endl;
-            system("pause");
             plikTekstowy << endl << liniaZDanymiAdresata;
         }
     } else {

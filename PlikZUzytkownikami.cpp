@@ -10,8 +10,10 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
     if (plikTekstowy.good() == true) {
         liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
 
-        if (czyPlikJestPusty() == false) {
-            plikTekstowy << endl << liniaZDanymiUzytkownika ;
+        if (czyPlikJestPusty() == true) {
+            plikTekstowy << liniaZDanymiUzytkownika;
+        } else {
+            plikTekstowy << endl << liniaZDanymiUzytkownika;
         }
     } else
         cout << "Nie udalo sie otworzyc pliku " << NAZWA_PLIKU_Z_UZYTKOWNIKAMI << " i zapisac w nim danych." << endl;
