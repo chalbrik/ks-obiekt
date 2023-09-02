@@ -17,12 +17,12 @@ void AdresatMenedzer::dodajAdresata() {
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
 
-    adresat = podajDaneNowegoAdresata(idZalogowanegoUzytkownika, plikZAdresatami.pobierzIdOstatniegoAdresata());
+    adresat = podajDaneNowegoAdresata();
 
     adresaci.push_back(adresat);
     plikZAdresatami.dopiszAdresataDoPliku(adresat);
 
-    plikZAdresatami.ustawIdOstatniegoAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
+    //plikZAdresatami.ustawIdOstatniegoAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
 }
 
 void AdresatMenedzer::wyswietlWszystkichAdresatow() {
@@ -42,10 +42,10 @@ void AdresatMenedzer::wyswietlWszystkichAdresatow() {
 
 
 //metody prywatne
-Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata) {
+Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
     Adresat adresat;
 
-    adresat.ustawId(++idOstatniegoAdresata);
+    adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
     cout << "Podaj imie: ";

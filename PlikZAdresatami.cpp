@@ -1,19 +1,21 @@
 #include "PlikZAdresatami.h"
 
 //metody publiczne
-int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
+//void PlikZAdresatami::pobierzIdOstatniegoAdresata() {
+//
+//    string daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
+//
+//    daneOstatniegoAdresataOdzielonegoPionowymiKreskami = pobierzZPlikuOstatniegoAdresataOdzielonegoPionowymiKreskami();
+//
+//    if(daneOstatniegoAdresataOdzielonegoPionowymiKreskami != "") {
+//        idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstatniegoAdresataOdzielonegoPionowymiKreskami);
+//    } else {
+//        idOstatniegoAdresata = 0;
+//    }
+//}
 
-    int idOstatniegoAdresata = 0;
-    string daneOstatniegoAdresataOdzielonegoPionowymiKreskami = "";
-
-    daneOstatniegoAdresataOdzielonegoPionowymiKreskami = pobierzZPlikuOstatniegoAdresataOdzielonegoPionowymiKreskami();
-
-    if(daneOstatniegoAdresataOdzielonegoPionowymiKreskami != "") {
-        idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstatniegoAdresataOdzielonegoPionowymiKreskami);
-    } else {
-        idOstatniegoAdresata = 0;
-    }
-
+int PlikZAdresatami::pobierzIdOstatniegoAdresata()
+{
     return idOstatniegoAdresata;
 }
 
@@ -51,6 +53,8 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     fstream plikTekstowy;
     plikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::out | ios::app);
 
+    idOstatniegoAdresata = idOstatniegoAdresata + 1;
+
     if (plikTekstowy.good() == true) {
         liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
 
@@ -66,9 +70,9 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
     system("pause");
 }
 
-void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata) {
-    idOstatniegoAdresata = noweIdOstatniegoAdresata;
-}
+//void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata) {
+//   idOstatniegoAdresata = noweIdOstatniegoAdresata;
+//}
 
 
 

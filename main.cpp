@@ -9,8 +9,8 @@ int main() {
     //Dostepne funkcje:
     //ksiazkaAdresowa.rejestracjaUzytkownika();
     //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-    //ksiazkaAdresowa.logowanieUzytkownika();
-    //ksiazkaAdresowa.dodajAdresata();
+    ksiazkaAdresowa.logowanieUzytkownika();
+    ksiazkaAdresowa.dodajAdresata();
     //ksiazkaAdresowa.wyswietlWszystkichAdresatow();
 
 
