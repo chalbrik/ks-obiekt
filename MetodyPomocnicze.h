@@ -20,6 +20,8 @@ public:
     static string konwerjsaIntNaString(int liczba);
 
     static int konwersjaStringNaInt(string liczba);
+
+    static char wczytajZnak();
 };
 
 #endif

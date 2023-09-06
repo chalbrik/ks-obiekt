@@ -1,14 +1,14 @@
 #include "AdresatMenedzer.h"
 
 //metody publiczne
-void AdresatMenedzer::ustawIdZalogowanegoUzytkownika(int przekazaneIdZalogowanegoUzytkownika) {
-    if(przekazaneIdZalogowanegoUzytkownika > 0) {
-        idZalogowanegoUzytkownika = przekazaneIdZalogowanegoUzytkownika;
-    }
-}
+//void AdresatMenedzer::ustawIdZalogowanegoUzytkownika(int przekazaneIdZalogowanegoUzytkownika) {
+//    if(przekazaneIdZalogowanegoUzytkownika > 0) {
+//        ID_ZALOGOWANEGO_UZYTKOWNIKA = przekazaneIdZalogowanegoUzytkownika;
+//    }
+//}
 
-void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
-    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int ID_ZALOGOWANEGO_UZYTKOWNIKA) {
+    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 }
 
 void AdresatMenedzer::dodajAdresata() {
@@ -20,9 +20,12 @@ void AdresatMenedzer::dodajAdresata() {
     adresat = podajDaneNowegoAdresata();
 
     adresaci.push_back(adresat);
-    plikZAdresatami.dopiszAdresataDoPliku(adresat);
-
-    //plikZAdresatami.ustawIdOstatniegoAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
+    if(plikZAdresatami.dopiszAdresataDoPliku(adresat)) {
+        cout << "Nowy adresat zostal dodany" << endl;
+    } else {
+        cout << "Blad. Nie udalo sie dodac nowego adresata do pliku." << endl;
+        system("pause");
+    }
 }
 
 void AdresatMenedzer::wyswietlWszystkichAdresatow() {
@@ -46,15 +49,13 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
     Adresat adresat;
 
     adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cout << "Podaj imie: ";
     adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
-    //adresat.pobierzImie = zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzImie);
 
     cout << "Podaj nazwisko: ";
     adresat.ustawNazwisko(MetodyPomocnicze::wczytajLinie());
-    //adresat.pobierzNazwisko = zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzNazwisko);
 
     cout << "Podaj numer telefonu: ";
     adresat.ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
