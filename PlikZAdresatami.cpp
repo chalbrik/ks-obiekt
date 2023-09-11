@@ -97,6 +97,18 @@ void PlikZAdresatami::usunWybranegoAdresataZpliku(int idUsuwanegoAdresata) {
                             tymczasowyPlikTekstowy << endl << wczytanaLinia;
                         }
             */
+
+            if (numerWczytanejLinii == zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata)) {}
+            else if (numerWczytanejLinii == 1 && numerWczytanejLinii != zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata))
+                tymczasowyPlikTekstowy << wczytanaLinia;
+            else if (numerWczytanejLinii == 2 && zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata) == 1)
+                tymczasowyPlikTekstowy << wczytanaLinia;
+            else if (numerWczytanejLinii > 2 && zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata) == 1)
+                tymczasowyPlikTekstowy << endl << wczytanaLinia;
+            else if (numerWczytanejLinii > 1 && zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata) != 1)
+                tymczasowyPlikTekstowy << endl << wczytanaLinia;
+
+            /*
             if(numerWczytanejLinii != 1) {
                 if(idUsuwanegoAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {}
                 else {
@@ -112,7 +124,7 @@ void PlikZAdresatami::usunWybranegoAdresataZpliku(int idUsuwanegoAdresata) {
                     tymczasowyPlikTekstowy << wczytanaLinia;
                 }
             }
-
+*/
 
             numerWczytanejLinii++;
 
