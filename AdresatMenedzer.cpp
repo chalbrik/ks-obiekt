@@ -130,29 +130,29 @@ void AdresatMenedzer::edytujAdresata() {
             switch (wybor) {
             case '1':
                 cout << "Podaj nowe imie: ";
-                adresaci[i].pobierzImie() = MetodyPomocnicze::wczytajLinie();
-                adresaci[i].pobierzImie() = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresaci[i].pobierzImie());
+                adresaci[i].ustawImie(MetodyPomocnicze::wczytajLinie());
+                adresaci[i].ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresaci[i].pobierzImie()));
                 zaktualizujDaneWybranegoAdresata(adresaci[i]);
                 break;
             case '2':
                 cout << "Podaj nowe nazwisko: ";
-                adresaci[i].pobierzNazwisko() = MetodyPomocnicze::wczytajLinie();
-                adresaci[i].pobierzNazwisko() = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresaci[i].pobierzNazwisko());
+                adresaci[i].ustawNazwisko(MetodyPomocnicze::wczytajLinie());
+                adresaci[i].ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresaci[i].pobierzNazwisko()));
                 zaktualizujDaneWybranegoAdresata(adresaci[i]);
                 break;
             case '3':
                 cout << "Podaj nowy numer telefonu: ";
-                adresaci[i].pobierzNumerTelefonu() = MetodyPomocnicze::wczytajLinie();
+                adresaci[i].ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
                zaktualizujDaneWybranegoAdresata(adresaci[i]);
                 break;
             case '4':
                 cout << "Podaj nowy email: ";
-                adresaci[i].pobierzEmail() = MetodyPomocnicze::wczytajLinie();
+                adresaci[i].ustawEmail(MetodyPomocnicze::wczytajLinie());
                 zaktualizujDaneWybranegoAdresata(adresaci[i]);
                 break;
             case '5':
                 cout << "Podaj nowy adres zamieszkania: ";
-                adresaci[i].pobierzAdres() = MetodyPomocnicze::wczytajLinie();
+                adresaci[i].ustawAdres(MetodyPomocnicze::wczytajLinie());
                 zaktualizujDaneWybranegoAdresata(adresaci[i]);
                 break;
             case '6':
