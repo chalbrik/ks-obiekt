@@ -73,7 +73,6 @@ void AdresatMenedzer::wyszukajAdresatowPoNazwisku() {
 
 void AdresatMenedzer::usunAdresata() {
     int idUsuwanegoAdresata = 0;
-    //int numerLiniiUsuwanegoAdresata = 0;
 
     system("cls");
     cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
@@ -88,8 +87,6 @@ void AdresatMenedzer::usunAdresata() {
             cout << endl << "Potwierdz naciskajac klawisz 't': ";
             znak = MetodyPomocnicze::wczytajZnak();
             if (znak == 't') {
-                //numerLiniiUsuwanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);
-                //usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata);
                 plikZAdresatami.usunWybranegoAdresataZpliku(idUsuwanegoAdresata);
                 adresaci.erase(itr);
                 cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
@@ -113,7 +110,6 @@ void AdresatMenedzer::edytujAdresata() {
     system("cls");
     Adresat adresat;
     int idEdytowanegoAdresata = 0;
-    int numerLiniiEdytowanegoAdresata = 0;
     string liniaZDanymiAdresata = "";
 
     cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl << endl;
@@ -122,7 +118,7 @@ void AdresatMenedzer::edytujAdresata() {
     char wybor;
     bool czyIstniejeAdresat = false;
 
-    for (int i = 0; i < adresaci.size(); i++) {
+    for (size_t i = 0; i < adresaci.size(); i++) {
         if (adresaci[i].pobierzId() == idEdytowanegoAdresata) {
             czyIstniejeAdresat = true;
             wybor = wybierzOpcjeZMenuEdycja();
@@ -254,16 +250,9 @@ char AdresatMenedzer::wybierzOpcjeZMenuEdycja() {
 
 
 void AdresatMenedzer::zaktualizujDaneWybranegoAdresata(Adresat adresat) {
-    int numerLiniiEdytowanegoAdresata = 0;
     string liniaZDanymiAdresata = "";
 
     plikZAdresatami.edytujDaneAdresataWPliku(adresat);
-    //numerLiniiEdytowanegoAdresata = zwrocNumerLiniiSzukanegoAdresata(adresat.pobierzId()); // chyba juz niepotrzebne i mozna usunac
-
-
-    //liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
-    //edytujWybranaLinieWPliku(numerLiniiEdytowanegoAdresata, liniaZDanymiAdresata);
-
     cout << endl << "Dane zostaly zaktualizowane." << endl << endl;
 }
 

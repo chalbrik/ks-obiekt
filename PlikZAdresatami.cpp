@@ -70,34 +70,6 @@ void PlikZAdresatami::usunWybranegoAdresataZpliku(int idUsuwanegoAdresata) {
     if (odczytywanyPlikTekstowy.good() == true) {
         while (getline(odczytywanyPlikTekstowy, wczytanaLinia)) {
 
-            /*
-                                    // Tych przypadkow jest tyle, gdyz chcemy osiagnac taki efekt,
-                                    // aby na koncu pliku nie bylo pustej linii
-                                    if (idUsuwanegoAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {}
-                                    else if (numerWczytanejLinii == 1 && idUsuwanegoAdresata != pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia))
-                                        tymczasowyPlikTekstowy << wczytanaLinia;
-                                    else if (numerWczytanejLinii == 2 && pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia) == 1)
-                                        tymczasowyPlikTekstowy << wczytanaLinia;
-                                    else if (numerWczytanejLinii > 2 && pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia) == 1)
-                                        tymczasowyPlikTekstowy << endl << wczytanaLinia;
-                                    else if (numerWczytanejLinii > 1 && pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia) != 1)
-                                        tymczasowyPlikTekstowy << endl << wczytanaLinia;
-                                    numerWczytanejLinii++;
-
-                                    */
-            /*
-                        if(idUsuwanegoAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {}
-                        else if(idUsuwanegoAdresata != pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia) && idUsuwanegoAdresata == 1 && numerWczytanejLinii == 2) {
-                            tymczasowyPlikTekstowy << wczytanaLinia;
-                        }else if(idUsuwanegoAdresata != pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia) && idUsuwanegoAdresata == 1 && numerWczytanejLinii > 2) {
-                            tymczasowyPlikTekstowy << endl << wczytanaLinia;
-                        } else if (idUsuwanegoAdresata != pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)&& idUsuwanegoAdresata != 1 && numerWczytanejLinii == 1) {
-                            tymczasowyPlikTekstowy << wczytanaLinia;
-                        }else {
-                            tymczasowyPlikTekstowy << endl << wczytanaLinia;
-                        }
-            */
-
             if (numerWczytanejLinii == zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata)) {}
             else if (numerWczytanejLinii == 1 && numerWczytanejLinii != zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata))
                 tymczasowyPlikTekstowy << wczytanaLinia;
@@ -107,24 +79,6 @@ void PlikZAdresatami::usunWybranegoAdresataZpliku(int idUsuwanegoAdresata) {
                 tymczasowyPlikTekstowy << endl << wczytanaLinia;
             else if (numerWczytanejLinii > 1 && zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata) != 1)
                 tymczasowyPlikTekstowy << endl << wczytanaLinia;
-
-            /*
-            if(numerWczytanejLinii != 1) {
-                if(idUsuwanegoAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {}
-                else {
-                    tymczasowyPlikTekstowy << endl << wczytanaLinia;
-                }
-
-            } else if(numerWczytanejLinii == 1) {
-                if(idUsuwanegoAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {
-                    // tutaj musze jakos zrobic tak zeby zapisa³ kolejn¹ linijke
-
-                }
-                else if(idUsuwanegoAdresata != pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {
-                    tymczasowyPlikTekstowy << wczytanaLinia;
-                }
-            }
-*/
 
             numerWczytanejLinii++;
 
@@ -171,8 +125,6 @@ void PlikZAdresatami::edytujDaneAdresataWPliku(Adresat adresat)
         zmienNazwePliku(NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI, NAZWA_PLIKU_Z_ADRESATAMI);
     }
 }
-
-
 
 //metody prywatne
 
@@ -330,7 +282,7 @@ int PlikZAdresatami::zwrocNumerLiniiSzukanegoAdresata(int idAdresata) {
             } else
                 numerLiniiWPlikuTekstowym++;
         }
-        if (czyIstniejeAdresat = false) {
+        if (!czyIstniejeAdresat) {
             plikTekstowy.close();
             return 0;
         }
