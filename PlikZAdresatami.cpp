@@ -1,4 +1,5 @@
 #include "PlikZAdresatami.h"
+#include "PlikTekstowy.h"
 
 //metody publiczne
 

@@ -1,4 +1,5 @@
 #include "PlikZUzytkownikami.h"
+#include "PlikTekstowy.h"
 
 //metody publiczne
 
@@ -45,7 +46,8 @@ vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku() {
 //metody prywatne
 
 bool PlikZUzytkownikami::czyPlikJestPusty() {
-     fstream plikTekstowy;
+
+    /* fstream plikTekstowy;
     plikTekstowy.open(NAZWA_PLIKU_Z_UZYTKOWNIKAMI.c_str(), ios::in);
     plikTekstowy.seekg(0, ios::end);
     if (plikTekstowy.tellg() == 0) {
@@ -55,6 +57,11 @@ bool PlikZUzytkownikami::czyPlikJestPusty() {
         plikTekstowy.close();
         return false;
     }
+    */
+
+    czyPlikJestPusty();
+
+
 }
 
 string PlikZUzytkownikami::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) {
