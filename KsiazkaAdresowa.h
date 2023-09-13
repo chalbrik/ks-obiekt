@@ -36,6 +36,8 @@ public:
 
     void rejestracjaUzytkownika();
     void logowanieUzytkownika();
+    void wylogowanieUzytkownika();
+    bool czyUzytkownikJestZalogowany();
 
     void dodajAdresata();
     void wyszukajAdresatowPoImieniu();
@@ -44,8 +46,6 @@ public:
     void edytujAdresata();
 
     void wyswietlWszystkichAdresatow();
-    void wylogowanieUzytkownika();
-    bool czyUzytkownikJestZalogowany();
 
     void wypiszWszystkichUzytkownikow();
 

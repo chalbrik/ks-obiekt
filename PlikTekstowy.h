@@ -3,7 +3,6 @@
 
 
 #include <iostream>
-//#include <sstream>
 #include <fstream>
 
 using namespace std;
@@ -16,6 +15,7 @@ public:
 
     PlikTekstowy(string nazwaPliku) : NAZWA_PLIKU(nazwaPliku) {};
 
+    string pobierzNazwePliku();
     bool czyPlikJestPusty();
 
 };

@@ -248,7 +248,6 @@ char AdresatMenedzer::wybierzOpcjeZMenuEdycja() {
     return wybor;
 }
 
-
 void AdresatMenedzer::zaktualizujDaneWybranegoAdresata(Adresat adresat) {
     string liniaZDanymiAdresata = "";
 

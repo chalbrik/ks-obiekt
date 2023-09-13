@@ -19,12 +19,9 @@ class AdresatMenedzer {
     Adresat podajDaneNowegoAdresata();
     void wyswietlDaneAdresata(Adresat adresat);
     void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
-    void usunWybranegoAdresataZpliku(int idUsuwanegoAdresata);
     int podajIdWybranegoAdresata();
     char wybierzOpcjeZMenuEdycja();
     void zaktualizujDaneWybranegoAdresata(Adresat adresat);
-    void edytujDaneAdresataWPliku(Adresat adresat);
-
 
 public:
 
