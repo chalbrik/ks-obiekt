@@ -53,8 +53,6 @@ public:
     char pobierzWyborOpcjiZMenuGlownego();
     char pobierzWyborOpcjiZMenuUzytkownika();
 
-
-
 };
 
 #endif

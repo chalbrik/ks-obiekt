@@ -69,7 +69,7 @@ void KsiazkaAdresowa::edytujAdresata() {
 
 void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()
 {
-
+    uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
 }
 
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
