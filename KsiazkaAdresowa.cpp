@@ -67,6 +67,11 @@ void KsiazkaAdresowa::edytujAdresata() {
     adresatMenedzer->edytujAdresata();
 }
 
+void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika()
+{
+
+}
+
 void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
     adresatMenedzer->wyswietlWszystkichAdresatow();
 }
