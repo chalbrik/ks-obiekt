@@ -26,6 +26,8 @@ public:
     static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
 
     static int wczytajLiczbeCalkowita();
+
+    static string pobierzLiczbe(string tekst, int pozycjaZnaku);
 };
 
 #endif

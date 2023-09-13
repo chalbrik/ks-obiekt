@@ -18,12 +18,11 @@ class UzytkownikMenedzer {
     int idZalogowanegoUzytkownika;
     PlikZUzytkownikami plikZUzytkownikami;
 
-    Uzytkownik podajDaneNowegoUzytkownika();
+    char wyborOpcjiZMenuUzytkownika;
 
+    Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
-
-    char wyborOpcjiZMenuUzytkownika;
 
 public:
 
@@ -38,9 +37,9 @@ public:
     void rejestracjaUzytkownika();
     void logowanieUzytkownika();
     void wylogowanieUzytkownika();
+
     int pobierzIdZalogowanegoUzytkownika();
     bool czyUzytkownikJestZalogowany();
-
     void wypiszWszystkichUzytkownikow();
 
 
